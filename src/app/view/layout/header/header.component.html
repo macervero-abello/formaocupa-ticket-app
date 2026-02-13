@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="tertiary-background">
+    <ion-item color="tertiary-background" lines="none">
+      <ion-thumbnail>
+        <ion-img src="../../../assets/icon/logo64.png"></ion-img>
+      </ion-thumbnail>
+      <ion-title>Fira Formaocupa {{ year() }}</ion-title>
+    </ion-item>
+      
+    @if(isSessionStarted()) {
+      <ion-buttons slot="end">
+        <ion-button (click)="requestLogoutModal()">
+          <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    }
+  </ion-toolbar>
+</ion-header>

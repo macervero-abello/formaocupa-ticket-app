@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true" color="main-background">
+  <div class="content">
+    <ion-card color="tertiary-background">
+      <ion-card-header>
+        <ion-card-title>Benvingut</ion-card-title>
+        @if(error()) {
+          <ion-card-subtitle>
+            <ion-text color="danger">
+              Usuari o contrasenya incorrectes
+            </ion-text>
+          </ion-card-subtitle>
+        }
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Nom d'usuari" labelPlacement="stacked" fill="outline" type="text" placeholder="Estand Formaocupa" [(ngModel)]="uname"></ion-input>
+            </ion-col>
+          </ion-row>
+      
+          <ion-row>
+            <ion-col>
+              <ion-input label="Contrasenya" labelPlacement="stacked" fill="outline" type="password" placeholder="****" [(ngModel)]="passwd"></ion-input>
+            </ion-col>
+          </ion-row>
+    
+          <ion-row>
+            <ion-col>
+              <div class="ion-text-end">
+                <ion-button expand="block" color="secondary-background" (click)="onLogin()">Iniciar sessió</ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

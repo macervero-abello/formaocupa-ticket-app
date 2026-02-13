@@ -1,0 +1,131 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true" color="main-background">
+  <div class="content">
+    <ion-card color="tertiary-background">
+      <ion-card-header>
+        <ion-card-title>{{ user()?.family }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <p>Nombre de visitants escanejats: {{ nvisits() }} <span class="clarification">(*)</span></p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              @if(readBarcodes().length > 0) {
+                @if(showVisits()) {
+                  <ion-button expand="block" color="secondary-background" (click)="onShowVisits()">Tancar identificadors visitants</ion-button>
+                  <ion-list>
+                    <ion-list-header>
+                      <ion-label>
+                        Visitants des de l'últim inici de sessió
+                      </ion-label>
+                    </ion-list-header>
+                    @for(visit of readBarcodes(); track visit) {
+                      <ion-item>
+                        <p>Codi visitant {{ $index + 1 }}: {{ visit }}</p>
+                      </ion-item>
+                    }
+                  </ion-list>
+                } @else {
+                  <ion-button expand="block" color="secondary-background" (click)="onShowVisits()">
+                    <ion-text>
+                      Veure identificadors visitants <span class="clarification">(*)</span>
+                    </ion-text>
+                  </ion-button>
+                }
+              }
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-text>
+                <p class="clarification">(*) Dades <span>locals</span> des de l'últim inici de sessió</p>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-modal [isOpen]="isVisitModalOpen()" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ng-template>
+      <div class="modal-div">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-title>
+                <ion-label>Entrada {{ lastBarcode() }}</ion-label>
+              </ion-title>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" color="success" (click)="onAddVisit()">Anotar visitant</ion-button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" color="danger" (click)="onIgnoreVisit()">Ignorar</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isErrorModalOpen()" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ng-template>
+      <div class="modal-div">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-title>
+                @if(sessionError()) {
+                  <ion-label>Error de sessió</ion-label>
+                } @else {
+                  <ion-label>Error de servidor</ion-label>
+                }
+              </ion-title>
+            </ion-col>
+          </ion-row>
+          @if(sessionError()) {
+            <ion-row>
+              <ion-col>
+                <ion-button expand="block" color="danger" (click)="onResetSession()">Reiniciar sessió</ion-button>
+              </ion-col>
+            </ion-row>
+          } @else {
+            <ion-row>
+              <ion-col>
+                <ion-button expand="block" color="success" (click)="onAddVisit()">Tornar-ho a provar</ion-button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-button expand="block" color="danger" (click)="onIgnoreVisit()">Cancel·lar</ion-button>
+              </ion-col>
+            </ion-row>
+          }
+        </ion-grid>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-fab slot="fixed" vertical="top" horizontal="end">
+    <ion-fab-button (click)="onScanQR()" color="secondary-background">
+      <ion-icon name="scan"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <app-logout-modal></app-logout-modal>
+</ion-content>

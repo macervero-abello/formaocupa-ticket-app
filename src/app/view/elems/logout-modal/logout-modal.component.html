@@ -1,0 +1,27 @@
+<ion-modal [isOpen]="isLogoutModalOpen()" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+  <ng-template>
+    <div class="modal-div">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-title>
+              <ion-label class="ion-text-wrap">Estàs segur que vols tancar la sessió?</ion-label>
+            </ion-title>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="success" (click)="logout(); requestLogoutModal()">Sí</ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="danger" (click)="requestLogoutModal()">No</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ng-template>
+</ion-modal>

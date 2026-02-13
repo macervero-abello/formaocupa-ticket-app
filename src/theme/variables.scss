@@ -1,0 +1,65 @@
+// For information on how to create your own theme, please refer to:
+// https://ionicframework.com/docs/theming/
+:root {
+	--ion-color-main-background: #253145;
+	--ion-color-main-background-rgb: 37,49,69;
+	--ion-color-main-background-contrast: #ffffff;
+	--ion-color-main-background-contrast-rgb: 255,255,255;
+	--ion-color-main-background-shade: #212b3d;
+	--ion-color-main-background-tint: #3b4658;
+
+    --ion-color-secondary-background: #0e89a4;
+	--ion-color-secondary-background-rgb: 14,137,164;
+	--ion-color-secondary-background-contrast: #ffffff;
+	--ion-color-secondary-background-contrast-rgb: 255, 255, 255;
+	--ion-color-secondary-background-shade: #0c7990;
+	--ion-color-secondary-background-tint: #2695ad;
+
+	--ion-color-tertiary-background: #f1efe6;
+	--ion-color-tertiary-background-rgb: 241,239,230;
+	--ion-color-tertiary-background-contrast: #000000;
+	--ion-color-tertiary-background-contrast-rgb: 0,0,0;
+	--ion-color-tertiary-background-shade: #d4d2ca;
+	--ion-color-tertiary-background-tint: #f2f1e9;
+
+	--ion-color-success: #0e89a4;
+	--ion-color-success-rgb: 14,137,164;
+	--ion-color-success-contrast: #ffffff;
+	--ion-color-success-contrast-rgb: 255, 255, 255;
+	--ion-color-success-shade: #0c7990;
+	--ion-color-success-tint: #1a751a;
+
+	--ion-color-danger: #ff6f61;
+	--ion-color-danger-rgb: 255,111,97;
+	--ion-color-danger-contrast: #000000;
+	--ion-color-danger-contrast-rgb: 0,0,0;
+	--ion-color-danger-shade: #e06255;
+	--ion-color-danger-tint: #ff7d71;
+}
+
+.ion-color-main-background {
+	--ion-color-base: var(--ion-color-main-background);
+	--ion-color-base-rgb: var(--ion-color-main-background-rgb);
+	--ion-color-contrast: var(--ion-color-main-background-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-main-background-contrast-rgb);
+	--ion-color-shade: var(--ion-color-main-background-shade);
+	--ion-color-tint: var(--ion-color-main-background-tint);
+}
+
+.ion-color-secondary-background {
+    --ion-color-base: var(--ion-color-secondary-background);
+	--ion-color-base-rgb: var(--ion-color-secondary-background-rgb);
+	--ion-color-contrast: var(--ion-color-secondary-background-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-secondary-background-contrast-rgb);
+	--ion-color-shade: var(--ion-color-secondary-background-shade);
+	--ion-color-tint: var(--ion-color-secondary-background-tint);
+}
+
+.ion-color-tertiary-background {
+	--ion-color-base: var(--ion-color-tertiary-background);
+	--ion-color-base-rgb: var(--ion-color-tertiary-background-rgb);
+	--ion-color-contrast: var(--ion-color-tertiary-background-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-tertiary-background-contrast-rgb);
+	--ion-color-shade: var(--ion-color-tertiary-background-shade);
+	--ion-color-tint: var(--ion-color-tertiary-background-tint);
+}

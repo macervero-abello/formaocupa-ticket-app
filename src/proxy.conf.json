@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "https://formaocupa.capalabs.com",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

@@ -1,0 +1,25 @@
+ion-fab {
+    padding-top: 4px;
+    padding-right: 4px;
+}
+
+ion-modal {
+  --height: auto;
+}
+
+.modal-div {
+    background-color: var(--ion-color-tertiary-background);
+}
+
+p.clarification, p span.clarification {
+  font-style: italic;
+  color: var(--ion-color-secondary-background);
+}
+
+span.clarification {
+  font-style: italic;
+}
+
+.clarification span {
+  font-weight: bold;
+}
