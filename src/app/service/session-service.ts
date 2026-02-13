@@ -9,6 +9,7 @@ import { User } from '../model/user';
 export class SessionService {
   private _http: HttpClient = inject(HttpClient);
 
+  private readonly BASE_URL = "https://formaocupa.capalabs.com";
   private readonly LSTAG = "FIRAFP_SESSION_DATA";
 
   private _user: WritableSignal<User|null> = signal(null);
@@ -32,7 +33,7 @@ export class SessionService {
       "password": passwd
     };
 
-    const response: any = await firstValueFrom(this._http.post<User>("/api/login", data));
+    const response: any = await firstValueFrom(this._http.post<User>(this.BASE_URL + "/api/login", data));
     
     return new Promise((resolve) => {
       if(response.status == 200) {
@@ -64,7 +65,7 @@ export class SessionService {
       'Authorization': 'Bearer ' + this._user()?.token
     });
 
-    await firstValueFrom(this._http.get("/api/logout", {'headers': headers})).catch((error: any) => {}).finally(() => {
+    await firstValueFrom(this._http.get(this.BASE_URL + "/api/logout", {'headers': headers})).catch((error: any) => {}).finally(() => {
       this._user.set(null);
       localStorage.removeItem(this.LSTAG);
       this._isSessionStarted.set(false);

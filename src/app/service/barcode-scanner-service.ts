@@ -3,7 +3,6 @@ import { CapacitorBarcodeScanner, CapacitorBarcodeScannerOptions, CapacitorBarco
 import { firstValueFrom } from 'rxjs';
 import { SessionService } from './session-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +11,7 @@ export class BarcodeScannerService {
   private _sessionService: SessionService = inject(SessionService);
   private _http: HttpClient = inject(HttpClient);
 
+  private readonly BASE_URL = "https://formaocupa.capalabs.com";
   private readonly LSTAG = "FIRAFP_VISITANTS_DATA";
 
   private _lastBarcode: WritableSignal<string> = signal("");
@@ -70,7 +70,7 @@ export class BarcodeScannerService {
 
     this._sessionError.set(false);
     this._serverError.set(false);
-    const response = await firstValueFrom(this._http.post("/api/visit", data, {'headers': headers})).catch((error: any) => {
+    const response = await firstValueFrom(this._http.post(this.BASE_URL + "/api/visit", data, {'headers': headers})).catch((error: any) => {
       this.checkError(error);
     });
   }
