@@ -11,6 +11,10 @@ ion-modal {
     background-color: var(--ion-color-tertiary-background);
 }
 
+.modal-div ion-grid {
+  padding-bottom: 50px;
+}
+
 p.clarification, p span.clarification {
   font-style: italic;
   color: var(--ion-color-secondary-background);

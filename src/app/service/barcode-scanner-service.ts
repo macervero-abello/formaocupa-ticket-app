@@ -41,7 +41,7 @@ export class BarcodeScannerService {
       scanOrientation: CapacitorBarcodeScannerScanOrientation.PORTRAIT,
       hint: CapacitorBarcodeScannerTypeHint.QR_CODE,
       scanButton: true,
-      scanText: "Visites escanejades: " + this._nvisits()
+      scanText: "Escaneja visita!"
     }
 
     let result: CapacitorBarcodeScannerScanResult = await CapacitorBarcodeScanner.scanBarcode(options);

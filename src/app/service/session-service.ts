@@ -3,12 +3,15 @@ import { computed, inject, Injectable, signal, Signal, WritableSignal } from '@a
 import { firstValueFrom } from 'rxjs';
 import { User } from '../model/user';
 
+import { CapacitorHttp } from '@capacitor/core';
+
 @Injectable({
   providedIn: 'root',
 })
 export class SessionService {
   private _http: HttpClient = inject(HttpClient);
 
+  private readonly BASE_URL = "https://formaocupa.capalabs.com";
   private readonly LSTAG = "FIRAFP_SESSION_DATA";
 
   private _user: WritableSignal<User|null> = signal(null);
@@ -32,16 +35,25 @@ export class SessionService {
       "password": passwd
     };
 
-    const response: any = await firstValueFrom(this._http.post<User>("/api/login", data));
-    
+    const headers: HttpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    //const response: any = await firstValueFrom(this._http.post<User>(this.BASE_URL + "/api/login", data, {'headers': headers}));
+    const response = await CapacitorHttp.post({
+      url: this.BASE_URL + "/api/login",
+      headers: {'Content-Type': 'application/json'},
+      data: data
+    });
+
     return new Promise((resolve) => {
       if(response.status == 200) {
         this._user.set({
-          token: response.token,
-          id: response.user.id,
-          username: response.user.username,
-          family: response.user.stand_description,
-          stand: response.user.stand,
+          token: response.data.token,
+          id: response.data.user.id,
+          username: response.data.user.username,
+          family: response.data.user.stand_description,
+          stand: response.data.user.stand,
           nvisits: 0,
           barcodes: []
         });
@@ -64,7 +76,7 @@ export class SessionService {
       'Authorization': 'Bearer ' + this._user()?.token
     });
 
-    await firstValueFrom(this._http.get("/api/logout", {'headers': headers})).catch((error: any) => {}).finally(() => {
+    await firstValueFrom(this._http.get(this.BASE_URL + "/api/logout", {'headers': headers})).catch((error: any) => {}).finally(() => {
       this._user.set(null);
       localStorage.removeItem(this.LSTAG);
       this._isSessionStarted.set(false);
