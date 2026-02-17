@@ -9,10 +9,19 @@
       
     @if(isSessionStarted()) {
       <ion-buttons slot="end">
-        <ion-button (click)="requestLogoutModal()">
-          <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+        <ion-button (click)="requestMenuModal()">
+          <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
         </ion-button>
+        <!--<ion-button (click)="requestLogoutModal()">
+          <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+        </ion-button>-->
       </ion-buttons>
     }
   </ion-toolbar>
+  {{ isMenuOpened() }}
 </ion-header>
+
+{{ isMenuOpened() }}
+<app-logout-modal></app-logout-modal>
+<app-menu-modal [isMenuModalOpen]="isMenuOpened()" (closeMenu)="requestMenuModal();"></app-menu-modal>
+<app-logout-modal></app-logout-modal>

@@ -1,0 +1,19 @@
+ion-modal {
+  --height: auto;
+}
+
+.modal-div {
+    background-color: var(--ion-color-tertiary-background);
+}
+
+.modal-div ion-list {
+  padding-bottom: 50px;
+}
+
+ion-list {
+  background-color: var(--ion-color-tertiary-background);
+}
+
+ion-list ion-item {
+  --background: transparent;
+}

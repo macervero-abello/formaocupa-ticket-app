@@ -1,0 +1,37 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true" color="main-background">
+  <div class="content">
+    <ion-card color="tertiary-background">
+      <ion-card-header>
+        <ion-card-title>FormaOcupa Ticket App</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <p>Aplicació feta per la <span class="emphasis">Fira FormaOcupa 2026</span> de Lleida amb l'objectiu de gestionar les visites que rep cadascun dels estands.</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <p>Ha estat implementada pels estudiants i el professorat de segon curs del <span class="emphasis">CFGS de Desenvolupament d'Aplicacions Web de l'Institut Caparrella</span>, sota el marc del projecte InnovaFP</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="ion-justify-content-center ion-align-items-center logo-col">
+              <ion-img src="assets/institut-caparrella-logo.png"></ion-img>
+            </ion-col>
+            <ion-col class="ion-justify-content-center ion-align-items-center logo-col">
+              <ion-img src="assets/innovafp.png"></ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <app-logout-modal></app-logout-modal>
+</ion-content>
