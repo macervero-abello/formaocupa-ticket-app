@@ -1,21 +1,20 @@
 <ion-modal [isOpen]="isMenuModalOpen()" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
   <ng-template>
     <div class="modal-div">
-      {{ isMenuModalOpen() }}
       <ion-list lines="none">
         @if(route() == HOME_ROUTE) {
-          <ion-item button (click)="goToAbout();">
-            <ion-icon aria-hidden="true" slot="start" name="information-circle-outline"></ion-icon>
+          <ion-item button (click)="requestMenuModal(); goToAbout();">
+            <ion-icon color="success" aria-hidden="true" slot="start" name="information-circle-outline"></ion-icon>
             <ion-label>Sobre l'app</ion-label>
           </ion-item>
         } @else if(route() == ABOUT_ROUTE) {
-          <ion-item button (click)="goToHome();">
-            <ion-icon aria-hidden="true" slot="start" name="home-outline"></ion-icon>
+          <ion-item button (click)="requestMenuModal(); goToHome();">
+            <ion-icon color="success" aria-hidden="true" slot="start" name="home-outline"></ion-icon>
             <ion-label>Inici</ion-label>
           </ion-item>
         }
-        <ion-item button (click)="requestLogoutModal()">
-          <ion-icon aria-hidden="true" slot="start" name="log-out-outline"></ion-icon>
+        <ion-item button (click)="requestMenuModal(); requestLogoutModal();">
+          <ion-icon color="success" aria-hidden="true" slot="start" name="log-out-outline"></ion-icon>
           <ion-label>Tancar sessió</ion-label>
         </ion-item>
       </ion-list>

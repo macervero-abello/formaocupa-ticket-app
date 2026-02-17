@@ -1,22 +1,23 @@
 import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, IonImg, IonThumbnail, IonItem, IonIcon, IonPopover, IonContent, IonList, IonLabel } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, IonImg, IonThumbnail, IonItem, IonIcon } from '@ionic/angular/standalone';
 import { distinctUntilChanged, filter, map, startWith } from 'rxjs';
 import { SessionService } from 'src/app/service/session-service';
 import { MenuModalComponent } from '../../elems/menu-modal/menu-modal.component';
 import { LogoutModalComponent } from '../../elems/logout-modal/logout-modal.component';
+import { MenuService } from 'src/app/service/menu-service';
 
 @Component({
   selector: 'app-header',
-  imports: [IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, IonImg, IonThumbnail, IonItem, IonIcon, IonPopover, IonContent, IonList, IonLabel, RouterModule, MenuModalComponent, LogoutModalComponent],
+  imports: [IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, IonImg, IonThumbnail, IonItem, IonIcon, RouterModule, MenuModalComponent, LogoutModalComponent],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent  implements OnInit {
   private _sessionService: SessionService = inject(SessionService);
+  private _menuService: MenuService = inject(MenuService);
   private _router: Router = inject(Router);
   
-  private _isMenuOpened: WritableSignal<boolean> = signal(false);
   private _route: WritableSignal<string> = signal("");
 
   public readonly HOME_ROUTE: string = "/home";
@@ -24,7 +25,6 @@ export class HeaderComponent  implements OnInit {
 
   public year: Signal<number> = signal(new Date().getFullYear()).asReadonly();
   public isSessionStarted: Signal<boolean> = this._sessionService.isSessionStarted;
-  public isMenuOpened: Signal<boolean> = computed(() => {return this._isMenuOpened();});
   public route: Signal<string> = computed(() => {return this._route();});
 
   constructor() {
@@ -46,12 +46,7 @@ export class HeaderComponent  implements OnInit {
   ngOnInit() {}
 
   public requestMenuModal(): void {
-    console.log("REQUEST!!")
-    this._isMenuOpened.update((curval: boolean) => {
-      console.log("curval", curval);
-      return !curval;
-    });
-    console.log(this.isMenuOpened());
+    this._menuService.setMenuRequest();
   }
 
   public requestLogoutModal(): void {

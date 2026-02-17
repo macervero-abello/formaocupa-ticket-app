@@ -18,10 +18,8 @@
       </ion-buttons>
     }
   </ion-toolbar>
-  {{ isMenuOpened() }}
 </ion-header>
 
-{{ isMenuOpened() }}
 <app-logout-modal></app-logout-modal>
-<app-menu-modal [isMenuModalOpen]="isMenuOpened()" (closeMenu)="requestMenuModal();"></app-menu-modal>
+<app-menu-modal></app-menu-modal>
 <app-logout-modal></app-logout-modal>

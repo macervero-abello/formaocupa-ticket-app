@@ -1,11 +1,10 @@
-import { Component, computed, inject, OnInit, signal, Signal, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, signal, Signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonGrid, IonCol, IonRow, IonFab, IonFabButton, IonIcon, IonButton, IonList, IonItem, IonListHeader, IonLabel, IonTitle, IonModal, IonText } from '@ionic/angular/standalone';
 import { Router, RouterModule } from '@angular/router';
 import { BarcodeScannerService } from 'src/app/service/barcode-scanner-service';
 import { HeaderComponent } from '../layout/header/header.component';
-import { LogoutModalComponent } from '../elems/logout-modal/logout-modal.component';
 import { SessionService } from 'src/app/service/session-service';
 import { User } from 'src/app/model/user';
 
@@ -15,7 +14,7 @@ import { User } from 'src/app/model/user';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [HeaderComponent, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonGrid, IonCol, IonRow, IonFab, IonFabButton, IonIcon, IonButton, IonList, IonItem, IonListHeader, IonLabel, IonTitle, IonModal, IonText, CommonModule, FormsModule, RouterModule, LogoutModalComponent]
+  imports: [HeaderComponent, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonGrid, IonCol, IonRow, IonFab, IonFabButton, IonIcon, IonButton, IonList, IonItem, IonListHeader, IonLabel, IonTitle, IonModal, IonText, CommonModule, FormsModule, RouterModule]
 })
 export class HomePage implements OnInit {
   private _router: Router = inject(Router);
